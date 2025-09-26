@@ -19,7 +19,7 @@ SECRET_KEY = os.getenv(
     'django-insecure-dev-key-1234567890'  # clave de desarrollo por defecto
 )
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['igva-project.onrender.com']
 
 # -----------------------
 # STATIC & MEDIA
