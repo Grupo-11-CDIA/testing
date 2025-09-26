@@ -5,6 +5,7 @@ Django settings for IGVA project.
 import os
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 
 # -----------------------
 # BASE
@@ -19,7 +20,8 @@ SECRET_KEY = os.getenv(
     'django-insecure-dev-key-1234567890'  # clave de desarrollo por defecto
 )
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = ['igva-project.onrender.com']
+ALLOWED_HOSTS = [ "localhost", 
+    "127.0.0.1",'igva-project.onrender.com']
 
 # -----------------------
 # STATIC & MEDIA
@@ -103,16 +105,14 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Database
+from dotenv import load_dotenv
+
+# Carga las variables desde .env
+load_dotenv()
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 
