@@ -103,8 +103,6 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-from dotenv import load_dotenv
-load_dotenv(BASE_DIR / '.env')
 
 DATABASES = {
     'default': {
